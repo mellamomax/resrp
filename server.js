@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const middleware = require('./middleware');
+const helpers = require('./helpers');
 
 app.use(bodyParser.json());
 
@@ -38,7 +39,11 @@ app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (re
   
   for (let i = 0; i < 3; i += 1) {
     data.push({
-      "meta": 
+      "created_at": (new Date()).toString(),
+      "meta": {
+        "id": helpers.generateUniqueId(),
+        "timestamp": Math.floor(Date.now() / 1000)
+      }
     });
   }
   
