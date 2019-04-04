@@ -1,17 +1,14 @@
 // server.js
-// where your node app starts
 
 // init project
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+
 const middleware = require('./middleware');
 const helpers = require('./helpers');
 
 app.use(bodyParser.json());
-
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
 
 // The status
 app.get('/ifttt/v1/status', middleware.serviceKeyCheck, (req, res) => {
@@ -33,37 +30,40 @@ app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
     
 });
 
+// Trigger endpoints
 app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (req, res) => {
   
   let data = [];
+  let numOfItems = req.body.limit || 3;
   
-  for (let i = 0; i < 3; i += 1) {
-    data.push({
-      "created_at": (new Date()).toString(),
-      "meta": {
-        "id": helpers.generateUniqueId(),
-        "timestamp": Math.floor(Date.now() / 1000)
-      }
-    });
+  if (numOfItems >= 1) {
+    for (let i = 0; i < numOfItems; i += 1) {
+      data.push({
+        "created_at": (new Date()).toISOString(), // Must be a valid ISOString
+        "meta": {
+          "id": helpers.generateUniqueId(),
+          "timestamp": Math.floor(Date.now() / 1000) // This returns a unix timestamp in seconds.
+        }
+      });
+    }
   }
   
-  
   res.status(200).send({
-    "data": {
-      "hello": "world"
-    }
+    "data": data
   });
 
 });
 
-app.post('/ifttt/v1/actions/create_new_thing', middleware.serviceKeyCheck, (res, req) => {
+
+// Action endpoints
+app.post('/ifttt/v1/actions/create_new_thing', middleware.serviceKeyCheck, (req, res) => {
   
   res.status(200).send({
-   "data": {
-     "hello": "world"
-   }
+    "data": [{
+      "id": helpers.generateUniqueId()
+    }]
   });
-
+  
 });
 
 // listen for requests :)
