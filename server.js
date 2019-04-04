@@ -8,6 +8,8 @@ const app = express();
 const middleware = require('./middleware');
 const helpers = require('./helpers');
 
+const IFTTT_KEY = process.env.IFTTT_KEY;
+
 app.use(bodyParser.json());
 
 // The status
@@ -31,10 +33,24 @@ app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
 });
 
 // Trigger endpoints
-app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (req, res) => {
+app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
+  
+  const key = req.get("IFTTT-Service-Key");
   
   let data = [];
-  let numOfItems = req.body.limit || 3;
+  let numOfItems = req.body.limit;
+  
+  if (typeof numOfItems === "undefined") { // Setting the default if limit doesn't exist.
+    numOfItems = 3;
+  }
+
+  if (key !== IFTTT_KEY) {
+    res.status(401).send({
+      "errors": [{
+        "message": "Channel/Service key is not correct"
+      }]
+    });
+  }
   
   if (numOfItems >= 1) {
     for (let i = 0; i < numOfItems; i += 1) {
@@ -56,7 +72,17 @@ app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (re
 
 
 // Action endpoints
-app.post('/ifttt/v1/actions/create_new_thing', middleware.serviceKeyCheck, (req, res) => {
+app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
+  
+  const key = req.get("IFTTT-Service-Key");
+  
+  if (key !== IFTTT_KEY) {
+    res.status(401).send({
+      "errors": [{
+        "message": "Channel/Service key is not correct"
+      }]
+    });
+  }
   
   res.status(200).send({
     "data": [{
