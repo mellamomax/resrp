@@ -37,6 +37,8 @@ app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
   
   const key = req.get("IFTTT-Service-Key");
   
+  console.log("headers", JSON.stringify(req.headers));
+  
   let data = [];
   let numOfItems = req.body.limit;
   
