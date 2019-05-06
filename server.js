@@ -72,6 +72,55 @@ app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
 
 });
 
+// 2nd trigger
+app.post('/ifttt/v1/triggers/new_thing_created_2', (req, res) => {
+  
+  const key = req.get("IFTTT-Service-Key");
+  
+  console.log("headers", JSON.stringify(req.headers));
+  
+  let data = [];
+  let numOfItems = req.body.limit;
+  
+  if (typeof numOfItems === "undefined") { // Setting the default if limit doesn't exist.
+    numOfItems = 3;
+  }
+
+  if (key !== IFTTT_KEY) {
+    res.status(401).send({
+      "errors": [{
+        "message": "Channel/Service key is not correct"
+      }]
+    });
+  }
+  
+  if (numOfItems >= 1) {
+    for (let i = 0; i < numOfItems; i += 1) {
+      data.push({
+        "model":"HS107",
+        "hardwareVersion":"1.0",
+        "deviceId":"80066186C2737010B10F22E0E70538B819D60B2700",
+        "deviceType":"IOT.SMARTPLUGSWITCH",
+        "parentDeviceContext":{  
+          "model":"HS107",
+          "hardwareVersion":"1.0",
+          "appServerUrl":"https://use1-wap.tplinkcloud.com",
+          "deviceId":"80066186C2737010B10F22E0E70538B819D60B27",
+          "deviceType":"IOT.SMARTPLUGSWITCH"
+        },
+        "meta": {
+          "id": helpers.generateUniqueId(),
+          "timestamp": Math.floor(Date.now() / 1000) // This returns a unix timestamp in seconds.
+        }
+      });
+    }
+  }
+  
+  res.status(200).send({
+    "data": data
+  });
+
+});
 
 // Action endpoints
 app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
