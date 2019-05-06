@@ -171,7 +171,7 @@ app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
 
 app.post('/ifttt/v1/actions/turn_on', actionFieldsCheck, (req, res) => {
   
-  const IFTTT_KEY = "UrP0cndNKbsXZgQ_yrMf8FeDhdVPEckurljQS8bIrsKWhLvlfwzRB9TZMFFW_Dr4";
+  const IFTTT_KEY = "9Ze4_S9mN0cPbn2sGrk-BgDB4vf7HXfGsaAIaRxPFcn6xHgbB-rXVG0b68caF6Mo";
   const key = req.get("IFTTT-Service-Key");
 
   if (key !== IFTTT_KEY) {
