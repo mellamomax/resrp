@@ -10,6 +10,10 @@ const helpers = require('./helpers');
 
 const IFTTT_KEY = process.env.IFTTT_KEY;
 
+const OPTION_FIELD_URLS = [
+  '/actions/turn_on/fields/device/options',
+];
+
 app.use(bodyParser.json());
 
 // The status
@@ -73,7 +77,7 @@ app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
 });
 
 // 2nd trigger
-app.post('/ifttt/v1/triggers/new_thing_created_2', (req, res) => {
+app.post('/ifttt/v1/triggers/turn_on', (req, res) => {
   
   const key = req.get("IFTTT-Service-Key");
   
