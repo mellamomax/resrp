@@ -23,7 +23,6 @@ app.get('/ifttt/v1/status', middleware.serviceKeyCheck, (req, res) => {
 
 // The test/setup endpoint
 app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
-  
   res.status(200).send({
     "data": {
       samples: {
@@ -33,7 +32,6 @@ app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
       }
     }
   });
-    
 });
 
 // Trigger endpoints
