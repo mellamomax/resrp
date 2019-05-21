@@ -10,10 +10,6 @@ const helpers = require('./helpers');
 
 const IFTTT_KEY = process.env.IFTTT_KEY;
 
-const OPTION_FIELD_URLS = [
-  '/actions/turn_on/fields/device/options',
-];
-
 app.use(bodyParser.json());
 
 // The status
@@ -35,25 +31,23 @@ app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
 });
 
 // Trigger endpoints
-app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
+app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (req, res) => {
   
-  const key = req.get("IFTTT-Service-Key");
+//   const key = req.get("IFTTT-Service-Key");
   
-  console.log("headers", JSON.stringify(req.headers));
+//   if (key !== IFTTT_KEY) {
+//     res.status(401).send({
+//       "errors": [{
+//         "message": "Channel/Service key is not correct"
+//       }]
+//     });
+//   }
   
-  let data = [];
-  let numOfItems = req.body.limit;
+  let data = [],
+      numOfItems = req.body.limit;
   
   if (typeof numOfItems === "undefined") { // Setting the default if limit doesn't exist.
     numOfItems = 3;
-  }
-
-  if (key !== IFTTT_KEY) {
-    res.status(401).send({
-      "errors": [{
-        "message": "Channel/Service key is not correct"
-      }]
-    });
   }
   
   if (numOfItems >= 1) {
