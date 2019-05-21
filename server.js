@@ -31,17 +31,17 @@ app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
 });
 
 // Trigger endpoints
-app.post('/ifttt/v1/triggers/new_thing_created', middleware.serviceKeyCheck, (req, res) => {
+app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
   
-//   const key = req.get("IFTTT-Service-Key");
+  const key = req.get("IFTTT-Service-Key");
   
-//   if (key !== IFTTT_KEY) {
-//     res.status(401).send({
-//       "errors": [{
-//         "message": "Channel/Service key is not correct"
-//       }]
-//     });
-//   }
+  if (key !== IFTTT_KEY) {
+    res.status(401).send({
+      "errors": [{
+        "message": "Channel/Service key is not correct"
+      }]
+    });
+  }
   
   let data = [],
       numOfItems = req.body.limit;
