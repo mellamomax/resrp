@@ -3,6 +3,7 @@
 // init project
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 
 const middleware = require('./middleware');
@@ -12,6 +13,7 @@ const IFTTT_KEY = process.env.IFTTT_KEY;
 
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 // The status
 app.get('/ifttt/v1/status', middleware.serviceKeyCheck, (req, res) => {
@@ -93,7 +95,7 @@ app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
 // listen for requests :)
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index.ejs');
 });
 
 const listener = app.listen(process.env.PORT, function() {
