@@ -11,6 +11,7 @@ const helpers = require('./helpers');
 const IFTTT_KEY = process.env.IFTTT_KEY;
 
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
 
 // The status
 app.get('/ifttt/v1/status', middleware.serviceKeyCheck, (req, res) => {
@@ -90,6 +91,11 @@ app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
 });
 
 // listen for requests :)
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
