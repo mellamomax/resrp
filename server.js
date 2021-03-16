@@ -9,7 +9,7 @@ const app = express();
 const middleware = require('./middleware');
 const helpers = require('./helpers');
 
-const IFTTT_KEY = process.env.IFTTT_KEY;
+const IFTTT_SERVICE_KEY = process.env.IFTTT_SERVICE_KEY;
 
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
@@ -38,7 +38,7 @@ app.post('/ifttt/v1/triggers/new_thing_created', (req, res) => {
   
   const key = req.get("IFTTT-Service-Key");
   
-  if (key !== IFTTT_KEY) {
+  if (key !== IFTTT_SERVICE_KEY) {
     res.status(401).send({
       "errors": [{
         "message": "Channel/Service key is not correct"
@@ -77,7 +77,7 @@ app.post('/ifttt/v1/queries/list_all_things', (req, res) => {
 
   const key = req.get("IFTTT-Service-Key");
 
-  if (key !== IFTTT_KEY) {
+  if (key !== IFTTT_SERVICE_KEY) {
     res.status(401).send({
       "errors": [{
         "message": "Channel/Service key is not correct"
@@ -121,7 +121,7 @@ app.post('/ifttt/v1/actions/create_new_thing', (req, res) => {
   
   const key = req.get("IFTTT-Service-Key");
   
-  if (key !== IFTTT_KEY) {
+  if (key !== IFTTT_SERVICE_KEY) {
     res.status(401).send({
       "errors": [{
         "message": "Channel/Service key is not correct"

@@ -1,4 +1,4 @@
-const IFTTT_KEY = process.env.IFTTT_KEY;
+const IFTTT_SERVICE_KEY = process.env.IFTTT_SERVICE_KEY;
 
 module.exports = {
   
@@ -6,7 +6,7 @@ module.exports = {
 
     const key = req.get("IFTTT-Service-Key");
     
-    if (key !== IFTTT_KEY) {
+    if (key !== IFTTT_SERVICE_KEY) {
       res.status(401).send();
     }
 
