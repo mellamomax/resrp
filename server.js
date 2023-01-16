@@ -20,7 +20,6 @@ app.get('/ifttt/v1/status', middleware.serviceKeyCheck, (req, res) => {
   res.status(200).send();
 });
 
-// The test/setup endpoint
 app.post('/ifttt/v1/test/setup', middleware.serviceKeyCheck, (req, res) => {
   res.status(200).send({
     "data": {
