@@ -5,11 +5,7 @@ module.exports = {
     const key = req.get("IFTTT-Service-Key");
 
     if (key !== IFTTT_SERVICE_KEY) {
-      return res.status(401).send({
-        "errors": [{
-          "message": "Channel/Service key is not correct"
-        }]
-      });
+      res.status(401).send();
     }
 
     next();
