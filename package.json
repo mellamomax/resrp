@@ -17,7 +17,8 @@
     "handlebars": "^4.7.7",
     "puppeteer": "^18.2.0",
     "request": "^2.88.2",
-    "text-table": "^0.2.0"
+    "text-table": "^0.2.0",
+    "ejs": "^3.1.8"
   },
   "engines": {
     "node": "14.x"
