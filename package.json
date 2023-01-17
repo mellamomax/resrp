@@ -1,34 +1,17 @@
 {
-  "name": "glitch-hello-node",
-  "version": "0.1.0",
-  "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "name": "my-serverless-function",
+  "version": "1.0.0",
+  "description": "A simple serverless function that returns 'Hello World'",
+  "main": "hello.js",
   "dependencies": {
-    "@fastify/formbody": "^7.4.0",
-    "@fastify/static": "^6.6.1",
-    "@fastify/view": "^7.4.0",
-    "axios": "^1.2.2",
-    "body-parser": "^1.20.1",
-    "express": "^4.18.2",
     "fastify": "^4.11.0",
-    "handlebars": "^4.7.7",
-    "puppeteer": "^18.2.0",
-    "request": "^2.88.2",
-    "text-table": "^0.2.0",
-    "ejs": "^3.1.8"
+    "fastify-serverless": "^2.1.0"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch"
-  ]
+  "license": "MIT"
 }
