@@ -166,7 +166,7 @@ else
 app.use(express.static('views'));
   
 // Handle requests from IFTTT
-app.post("/", function (request, response) {
+app.post("/build_hooks/63c5e64dfdf17930f15e1a90", function(req, res) {
   console.log("Request received from IFTTT");
   console.log("Triggering multiple IFTTT services");
   // update the path to index.js to include the public directory
