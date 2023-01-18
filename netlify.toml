@@ -1,6 +1,6 @@
 [build]
   functions = "functions"
-  command = "npm install && npm run build && npm install aws-serverless-fastify"
+  command = "npm install -D netlify-plugin-express"
   
 [build.environment]
   NODE_ENV = "production"
