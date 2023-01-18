@@ -4,13 +4,15 @@
   "description": "A simple serverless function that returns 'Hello World'",
   "main": "hello.js",
   "dependencies": {
-    "fastify": "^3.11.0"
+    "fastify": "^3.11.0",
+    "aws-serverless-fastify": "^2.2.0"
   },
   "engines": {
     "node": "16.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:lambda": "netlify-lambda build functions"
   },
   "license": "MIT"
 }
