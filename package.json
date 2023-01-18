@@ -5,7 +5,7 @@
   "main": "functions/index.js",
   "dependencies": {
     "fastify": "^3.11.0",
-    "aws-serverless-fastify": "^2.2.0"
+    "aws-serverless-fastify": "3.0.2" 
   },
   "engines": {
     "node": "16.x"
