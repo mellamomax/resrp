@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:lambda": "netlify-lambda build functions"
+    "build:lambda": "netlify-lambda build functions",
     "build": "npm run build:functions",
     "build:functions": "netlify-lambda build functions",
     "deploy": "netlify deploy",
