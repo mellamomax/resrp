@@ -1,6 +1,6 @@
 [build]
   functions = "functions"
-   command = "npm ci && npm audit fix"
+   command = "install"
 
   
 [[plugins]]
