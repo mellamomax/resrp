@@ -1,0 +1,6 @@
+name: netlify-plugin-express
+version: 1.0.0
+description: A Netlify plugin for running Express.js apps
+netlify:
+  functions:
+    - express.js
