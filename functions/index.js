@@ -10,8 +10,5 @@ app.get('/about', (req, res) => {
 });
 
 exports.handler = (event, context, callback) => {
-    app.ready(() => {
-        const handler = app.server.createHandler();
-        handler(event, context, callback);
-    });
+    app.listen(3000, () => { console.log('Server started on port 3000'); });
 };
