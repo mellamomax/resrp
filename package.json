@@ -4,7 +4,7 @@
   "description": "A simple serverless function that returns 'Hello World'",
   "main": "functions/index.js",
   "dependencies": {
-    "fastify": "^4.11.0",
+    "fastify": "^4.11.0"
   },
   "devDependencies": {
     "netlify-lambda": "latest"
