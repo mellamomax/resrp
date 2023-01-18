@@ -5,7 +5,7 @@
   "main": "hello.js",
   "dependencies": {
     "fastify": "^3.11.0",
-    "aws-serverless-fastify": "^3.020"
+    "aws-serverless-fastify": "^3.02"
   },
   "engines": {
     "node": "16.x"
