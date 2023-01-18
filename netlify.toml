@@ -1,7 +1,7 @@
 [build]
   functions = "functions"
-  command = "npm install && npm run build"
-
+  command = "npm install && npm run build && npm i aws-serverless-fastify"
+  
 [build.environment]
   NODE_ENV = "production"
 
