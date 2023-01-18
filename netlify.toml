@@ -3,7 +3,6 @@
   command = "npm install -D netlify-plugin-express"
   
 [build.environment]
-  NODE_ENV = "production"
 
 [[plugins]]
   package = "netlify-plugin-express"
