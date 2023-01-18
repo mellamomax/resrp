@@ -14,5 +14,5 @@ app.get('/about', (req, res) => {
 
 module.exports.handler = (event, context, callback) => {
     app.listen(3000, () => { console.log('Server started on port 3000'); });
-    server(event, context, callback);
 };
+
