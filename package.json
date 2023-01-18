@@ -4,7 +4,7 @@
   "description": "A simple serverless function that returns 'Hello World'",
   "main": "hello.js",
   "dependencies": {
-    "fastify": "^3.11.0",
+    "fastify": "^3.11.0"
   },
   "engines": {
     "node": "16.x"
