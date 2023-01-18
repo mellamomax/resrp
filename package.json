@@ -5,7 +5,8 @@
   "main": "functions/index.js",
   "dependencies": {
     "fastify": "^4.11.0",
-    "aws-serverless-fastify": "3.0.2"
+    "aws-serverless-fastify": "3.0.2",
+     "netlify-plugin-express": "1.0.0"
   },
   "engines": {
     "node": "16.x"
@@ -13,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:lambda": "netlify-lambda build functions",
-    "build": "npm run build:functions",
+    "build": "npm run build:lambda"
     "build:functions": "netlify-lambda build functions",
     "deploy": "netlify deploy",
     "serve": "netlify-lambda serve functions"
