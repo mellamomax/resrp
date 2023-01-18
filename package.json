@@ -17,7 +17,7 @@
     "build:functions": "netlify-lambda build functions",
     "deploy": "netlify deploy",
     "serve": "netlify-lambda serve functions"
-  },
+  }
   },
   "license": "MIT"
 }
