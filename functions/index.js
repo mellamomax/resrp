@@ -1,12 +1,11 @@
-const awsServerlessFastify = require('aws-serverless-fastify');
-const fastify = require('fastify')();
 const express = require('express');
+const app = express();
 
+app.get('/', (req, res) => {
+    res.send({ message: 'Hello World' });
+});
 
-fastify.get('/', async (req, reply) => {
-  return {
-    message: 'Hello World'
-  }
-})
-
-module.exports.handler = awsServerlessFastify(fastify);
+module.exports.handler = (event, context, callback) => {
+    const server = awsServerlessFastify(app);
+    server(event, context, callback);
+};
