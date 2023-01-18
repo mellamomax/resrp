@@ -2,7 +2,7 @@
   "name": "my-serverless-function",
   "version": "1.0.0",
   "description": "A simple serverless function that returns 'Hello World'",
-  "main": "hello.js",
+  "main": "functions/index.js",
   "dependencies": {
     "fastify": "^3.11.0",
     "aws-serverless-fastify": "^2.2.0"
