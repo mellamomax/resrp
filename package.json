@@ -5,8 +5,7 @@
   "main": "functions/index.js",
   "dependencies": {
     "fastify": "^4.11.0",
-    "aws-serverless-fastify": "3.0.2",
-    "netlify-plugin-express": "latest"
+    "aws-serverless-fastify": "3.0.2"
   },
   "engines": {
     "node": "16.x"
