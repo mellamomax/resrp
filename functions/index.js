@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const awsServerlessFastify = require('aws-serverless-fastify');
+
+
 
 app.get('/', (req, res) => {
     res.send({ message: 'Hello World' });
