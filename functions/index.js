@@ -1,5 +1,5 @@
-const fastify = require('fastify')({ logger: true })
-const fastifyServerless = require('fastify-serverless')
+const awsServerlessFastify = require('aws-serverless-fastify');
+const fastify = require('fastify')();
 
 fastify.get('/', async (req, reply) => {
   return {
@@ -7,4 +7,4 @@ fastify.get('/', async (req, reply) => {
   }
 })
 
-exports.handler = fastifyServerless(fastify)
+module.exports.handler = awsServerlessFastify(fastify);
