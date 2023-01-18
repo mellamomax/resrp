@@ -1,6 +1,8 @@
 [build]
   functions = "functions"
   command = "npm install"
+   command = "npm ci && npm audit fix"
+
   
 [[plugins]]
 package = "netlify-plugin-npm-audit"
