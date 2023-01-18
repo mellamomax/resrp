@@ -1,7 +1,6 @@
-const express = require('express');
-const app = express();
+const fastify = require('fastify');
+const app = fastify();
 const awsServerlessFastify = require('aws-serverless-fastify');
-
 
 
 app.get('/', (req, res) => {
